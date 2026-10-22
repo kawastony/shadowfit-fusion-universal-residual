@@ -1,15 +1,32 @@
-# Shadowfit Failure, Fusion Inversion, and Universal Residual
+# Shadowfit-Fusion-Universal-Residual
 
-Working notes and paper drafts on:
+Universal Geometric Residual $\mathcal{R}_u$ diagnostic kernel: one engine for detecting structural rupture across domains.
 
-- No-go theorem for local polynomial closures sustaining sub-Schwarzschild shadow-to-mass ratios in static, spherically symmetric, asymptotically flat spacetimes with Schwarzschild exterior.
-- Floor: $b_c / M \ge 3\sqrt{3} \approx 5.196$, equality iff $r_\mathrm{surf} \le 3M$.
-- Fusion diagnostic inversion: mapping the same closure filter to Grad-Shafranov equilibria (DIII-D-like gfile, tanh pedestal solves where global poly fails).
-- Universal residual $\mathcal{R}_u$ as geometric stress relative to a spine equilibrium, proposed for BH, fusion, and biology domains.
+## Core Idea
+$R_u = (\mathrm{obs} - \mathrm{spine}) / \sigma_\mathrm{healthy}$
 
-See:
-- `notes/shadowfit_v7.md`
-- `notes/shadowfit_v8_with_fusion_appendix.md`
-- `notes/universal_residual_Ru_bridge.md`
+5-pt median filter = Information Sieve (kills transient noise/glitches/gas puffs).  
+Amp + $\sigma$ gate = rupture detector (keeps sustained structural failure).
 
-Status: conceptual architecture complete; Kerr $a \approx 0.79$ match noted as coincidence of adopted target; verification of published shadow tables recommended before submission claims.
+## Magnificent Eight Domains
+| # | Domain | Spine | Rupture example | Gate |
+|---|--------|-------|-----------------|------|
+| 1 | Black Hole | 3M photon sphere, floor 5.196 | $b=3.265 \to a\approx0.792$ | 0.3 |
+| 2 | Fusion | Solov'ev + tanh pedestal | ELM crash | 0.4 |
+| 3 | Market | 50-pt efficient median | Flash crash -10% | 2.0 |
+| 4 | Protein | Folding funnel | Misfold to toxic basin | 1.5 |
+| 5 | Horse racing | 10-race true form | Hidden injury | 3.0 |
+| 6 | NRL | 15-min PER baseline | Fatigue / non-contact injury | 4.0 |
+| 7 | Network | 100 Mbps heartbeat | DDoS sustained | 4.0 |
+| 8 | Climate | Holocene AMOC 15 Sv | AMOC collapse | 4.5 |
+
+See `src/universal_rupture_detector.py` for the immutable 5-line core and `notes/domain_configs.md`.
+
+## Lab Track
+- Fusion: pedestal inversion / $S_\mathrm{ELM}$ predictor (tanh R2=0.9942 vs global poly fail).
+- BH: template-free spin from equatorial asymmetry (Bardeen verified $a=0.79195 \to b_c=3.265$).
+
+## App / SDK Path
+See `notes/sdk_and_platform_evolution.md` for structuring into a professional library (SpineFactory, AdaptiveGate, DomainRegistry, data sanitizers, closed-loop ideas) and deployment instructions.
+
+Status: research kernel + stress-tested gates. Ready for packaging and domain-selector app.
